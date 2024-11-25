@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Local Storage Example</title>
+  </head>
+  <body>
+    <h2>Store Names</h2>
+    <input type="text" id="nameInput" placeholder="Enter a name" />
+    <button onclick="addName()">Add Name</button>
+    <button onclick="removeName()">Remove</button>
+    <h3>Stored Names:</h3>
+    <ul id="nameList"></ul>
+
+    <script>
+      function addName() {
+        const name = document.getElementById("nameInput").value;
+
+        // Get the existing names from local storage, or create an empty array
+        let names = localStorage.names ? localStorage.names.split(",") : [];
+
+        // Add the new name to the array
+        if (name) names.push(name);
+
+        // Save the updated array back to local storage
+        localStorage.names = names.join(",");
+
+        // Clear the input field
+        document.getElementById("nameInput").value = "";
+
+        // Display updated names
+        displayNames();
+      }
+
+      function displayNames() {
+        const nameList = document.getElementById("nameList");
+
+        // Get the stored names and convert them to a list
+        const names = localStorage.names ? localStorage.names.split(",") : [];
+        nameList.innerHTML = names.map((name) => `<li>${name}</li>`).join("");
+      }
+
+      function removeName() {
+        let name = document.getElementById("nameInput").value;
+        let nameList = localStorage.names ? localStorage.names.split(",") : [];
+        if (name) {
+          // Remove the name if it exists in the list
+          nameList = nameList.filter((item) => item !== name);
+          // Update localStorage with the modified list
+          localStorage.names = nameList.join(",");
+          displayNames();
+        }
+      }
+
+      // Load stored names when the page loads
+      window.onload = displayNames;
+    </script>
+  </body>
+</html>

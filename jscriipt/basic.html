@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title> </title>
+  </head>
+  <body>
+    <p id="hello">Hello</p>
+    <p id="bye">Bye</p>
+    <button type="button" onclick="func()">Hide Hello</button>
+    <button type="button" onclick="funcTwo()">Hide Bye</button>
+
+    <button type="button" onclick="funcThree()">Show Hello</button>
+    <button type="button" onclick="funcFour()">Show Bye</button>
+
+    <script type="text/javascript">
+      function func() {
+        let hello = document.getElementById("hello");
+        hello.style.display = "none";
+      }
+      function funcTwo() {
+        let bye = document.getElementById("bye");
+        bye.style.display = "none";
+      }
+      function funcThree() {
+        let hello = document.getElementById("hello");
+        hello.style.display = "block";
+      }
+      function funcFour() {
+        let bye = document.getElementById("bye");
+        bye.style.display = "";
+      }
+    </script>
+  </body>
+</html>

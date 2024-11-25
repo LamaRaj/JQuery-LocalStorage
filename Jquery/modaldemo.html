@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <style>
+      .LoginForm,
+      .SignupForm {
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 50px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: none;
+        position: fixed; /* Stay in the same position even if scrolled */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .nav {
+        position: fixed; /* Stays fixed at the top-right corner, even when scrolling */
+        top: 0; /* Align to the top */
+        right: 0; /* Align to the right */
+        padding: 10px; /* Add some spacing */
+      }
+
+      h2 {
+        border-bottom: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="" id="'home">Home</a> | <a href="?" id="login">Login</a> |
+      <a href="?" id="signup">Signup</a>
+    </div>
+    <div class="LoginForm">
+      <form method="" action="">
+        <h2>Login</h2>
+        <label>Email</label>
+        <input type="text" name="Logemail" id="Logemail" />
+        <label>Password</label>
+        <input type="password" name="Logpassword" id="Logpassword" /><br />
+        <button>submit</button>
+        <button id="Logexit">Exit</button>
+      </form>
+    </div>
+    <div class="SignupForm">
+      <form method="" action="">
+        <h2>Signup</h2>
+        <label>Name</label>
+        <input type="text" name="name" id="name" />
+        <label>Email</label>
+        <input type="text" name="email" id="email" />
+        <label>Password</label>
+        <input type="password" name="password" id="password" /><br />
+        <label>Age</label>
+        <input type="text" name="age" id="age" />
+        <label>Contact</label>
+        <input type="text" name="contact" id="contact" />
+        <button>submit</button>
+        <button id="exit">Exit</button>
+      </form>
+    </div>
+  </body>
+
+  <script src="jquery-3.7.1.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Hide both forms initially
+      $(".LoginForm, .SignupForm").hide();
+
+      // Show Login form when Login is clicked
+      $("#login").click(function (event) {
+        event.preventDefault();
+        $(".SignupForm").hide();
+        $(".LoginForm").show();
+      });
+
+      // Show Signup form when Signup is clicked
+      $("#signup").click(function (event) {
+        event.preventDefault();
+        $(".LoginForm").hide();
+        $(".SignupForm").show();
+      });
+
+      // Hide Login form when Exit in Login is clicked
+      $("#Logexit").click(function () {
+        $(".LoginForm").hide();
+      });
+
+      // Hide Signup form when Exit in Signup is clicked
+      $("#exit").click(function () {
+        $(".SignupForm").hide();
+      });
+    });
+  </script>
+</html>
